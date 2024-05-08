@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".fragments.MovieDetailFragment">
+
+    <ImageView
+        android:id="@+id/imageBackdrop"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagePoster"
+        android:layout_width="108dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBackdrop" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonReview"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/heart"
+        android:backgroundTintMode="src_in"
+        app:layout_constraintStart_toStartOf="@+id/textDate"
+        app:layout_constraintTop_toBottomOf="@+id/textDate" />
+
+    <TextView
+        android:id="@+id/textMovieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBackdrop"
+        app:layout_constraintStart_toStartOf="@+id/textDate" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="08/03/2024"
+        app:layout_constraintStart_toEndOf="@+id/imagePoster"
+        app:layout_constraintTop_toBottomOf="@+id/imageBackdrop" />
+
+    <TextView
+        android:id="@+id/textTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="1hr 34mins"
+        app:layout_constraintStart_toEndOf="@+id/textDate"
+        app:layout_constraintTop_toTopOf="@+id/textDate" />
+
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePoster" />
+
+    <TextView
+        android:id="@+id/labelRated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Rated"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textDescription" />
+
+    <TextView
+        android:id="@+id/textRated"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:text="P - Movies are allowed to be disseminated to viewers of all ages"
+        app:layout_constraintEnd_toEndOf="@+id/textDescription"
+        app:layout_constraintTop_toTopOf="@+id/labelRated" />
+
+    <TextView
+        android:id="@+id/textGenre"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Hài, Họa Hình"
+        app:layout_constraintEnd_toEndOf="@+id/textRated"
+        app:layout_constraintStart_toStartOf="@+id/textRated"
+        app:layout_constraintTop_toTopOf="@+id/labelGenre" />
+
+    <TextView
+        android:id="@+id/labelGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Genre"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textRated" />
+
+    <TextView
+        android:id="@+id/textDirector"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Mike Mitchell"
+        app:layout_constraintEnd_toEndOf="@+id/textRated"
+        app:layout_constraintStart_toStartOf="@+id/textRated"
+        app:layout_constraintTop_toTopOf="@+id/labelDirector" />
+
+    <TextView
+        android:id="@+id/labelDirector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Director"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textGenre" />
+
+    <TextView
+        android:id="@+id/textCast"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Jack Black, Dustin Hoffman, James Hong, Awkwafina"
+        app:layout_constraintEnd_toEndOf="@+id/textRated"
+        app:layout_constraintStart_toStartOf="@+id/textRated"
+        app:layout_constraintTop_toTopOf="@+id/labelCast" />
+
+    <TextView
+        android:id="@+id/labelCast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Cast"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textDirector" />
+
+    <TextView
+        android:id="@+id/textLanguage"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="Tiếng Anh - Phụ đề Tiếng Việt; Lồng tiếng"
+        app:layout_constraintEnd_toEndOf="@+id/textRated"
+        app:layout_constraintStart_toStartOf="@+id/textRated"
+        app:layout_constraintTop_toTopOf="@+id/labelLanguage" />
+
+    <TextView
+        android:id="@+id/labelLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Language"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textCast" />
+
+    <Button
+        android:id="@+id/buttonBook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#AC2B31"
+        android:text="BOOK NOW"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
