@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">RepCGV</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="hint_user_name">Full name <font color="#AD2B33">*</font></string>
+    <string name="hint_user_phone">Phone number <font color="#AD2B33">*</font></string>
+    <string name="hint_user_email">Email <font color="#AD2B33">*</font></string>
+    <string name="hint_user_dob">Date of birth</string>
+    <string name="hint_user_gender">Gender</string>
+    <string name="hint_user_city">City <font color="#AD2B33">*</font></string>
+    <string name="hint_notice"><font color="#AD2B33">*</font> Required field</string>
+    <string name="hint_old_password">Old password <font color="#AD2B33">*</font></string>
+    <string name="hint_new_password">New password <font color="#AD2B33">*</font></string>
+    <string name="hint_confirm_password">Confirm password <font color="#AD2B33">*</font></string>
+    <string name="forgot_password_text"><![CDATA[Quên <u>mật khẩu</u>]]></string>
+    <string name="hint_ticket_code">Ticket\'s code <font color="#AD2B33">*</font></string>
+    <string name="refund_text"><u>Request a refund</u></string>
+    <string name="hint_voucher_code">Voucher\'s code <font color="#AD2B33">*</font></string>
+    <string name="map_api">AIzaSyBvpD7jI5CDGnf8w7_GBOPKdu026mZ-A-4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -3,5 +3,20 @@
     <style name="Base.Theme.RepCGV" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Filled" parent="">
+        <item name="colorControlActivated">@color/black</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/red</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/red</item> <!-- button text color -->
     </style>
 </resources>
