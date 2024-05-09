@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RegisterFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginBottom="500dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:scaleType="fitCenter"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintVertical_bias="0.0"
+            android:src="@drawable/logo" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutUserName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Họ Tên"
+            android:textColorHint="@color/greytext"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:boxCollapsedPaddingTop="8dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/red"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/red"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/greytext"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView5">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/textinputedittext_color"
+                android:enabled="true"
+                android:inputType="text|textEmailAddress"
+                android:paddingTop="25dp"
+                android:paddingBottom="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutUserPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Số Điện thoại"
+            android:textColorHint="@color/greytext"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:boxCollapsedPaddingTop="8dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/red"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/red"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/greytext"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayoutUserName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/textinputedittext_color"
+                android:enabled="true"
+                android:inputType="text|textEmailAddress"
+                android:paddingTop="25dp"
+                android:paddingBottom="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutUserEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/hint_user_email"
+            android:textColorHint="@color/greytext"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:boxCollapsedPaddingTop="8dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/red"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/red"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/greytext"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayoutUserPhone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/textinputedittext_color"
+                android:enabled="true"
+                android:inputType="text|textEmailAddress"
+                android:paddingTop="25dp"
+                android:paddingBottom="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutNewPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="16dp"
+            android:hint="Mật Khẩu"
+            android:textColorHint="@color/greytext"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:boxCollapsedPaddingTop="8dp"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeErrorColor="@color/red"
+            app:cursorColor="@color/black"
+            app:cursorErrorColor="@color/red"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/greytext"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayoutUserEmail">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textPassword"
+                android:paddingTop="25dp"
+                android:paddingBottom="8dp"
+                android:singleLine="true"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/GroupContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inputLayoutNewPassword">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutDateOfBirth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Ngày Sinh"
+                android:textColorHint="@color/greytext"
+                android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="filled"
+                app:boxCollapsedPaddingTop="8dp"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeErrorColor="@color/red"
+                app:cursorColor="@color/black"
+                app:cursorErrorColor="@color/red"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/greytext"
+                app:errorIconTint="@color/red"
+                app:errorTextColor="@color/red"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextDateOfBirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"                    android:drawableEnd="@drawable/drop_down"
+
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputLayoutGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Giới tính"
+                android:textColorHint="@color/greytext"
+                android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="filled"
+                app:boxCollapsedPaddingTop="8dp"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeErrorColor="@color/red"
+                app:cursorColor="@color/black"
+                app:cursorErrorColor="@color/red"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/greytext"
+                app:errorIconTint="@color/red"
+                app:errorTextColor="@color/red"
+                app:hintTextColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/inputLayoutDateOfBirth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:drawableEnd="@drawable/drop_down"
+
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="60dp"
+            android:backgroundTint="@color/red"
+            android:text="Đăng ký"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
