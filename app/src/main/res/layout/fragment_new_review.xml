@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".fragments.NewReviewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="100dp"
+        android:backgroundTint="#AC2B33"
+        android:text="Submit Review"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbar"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:src="@drawable/back_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/red" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|fill_vertical"
+            android:text="Write a review"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ticketBtn"
+            app:layout_constraintStart_toEndOf="@id/backBtn"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ticketBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:src="@drawable/ticket"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/menuBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/red" />
+
+        <ImageButton
+            android:id="@+id/menuBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@null"
+            android:src="@drawable/menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/red" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="Write a review"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardText"
+        android:layout_width="0dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31">
+
+        <EditText
+            android:id="@+id/textReview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardText">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStar_0"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_weight="1"
+            android:background="@drawable/star"
+            android:backgroundTint="#FFEB3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStar_1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/star"
+            android:backgroundTint="#FFEB3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStar_2"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/star"
+            android:backgroundTint="#FFEB3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStar_3"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/star"
+            android:backgroundTint="#FFEB3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonStar_4"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/star"
+            android:backgroundTint="#FFEB3B"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

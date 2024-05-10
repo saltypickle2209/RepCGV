@@ -56,7 +56,7 @@ class MovieReviewFragment : Fragment() {
         recyclerViewReviews.layoutManager = LinearLayoutManager(context)
 
         buttonAdd.setOnClickListener {
-//            (this.activity as? MainActivity)?.addFragment(NewReviewFragment(),"newReview")
+            (this.activity as? MainActivity)?.addFragment(NewReviewFragment(),"newReview")
         }
     }
 
