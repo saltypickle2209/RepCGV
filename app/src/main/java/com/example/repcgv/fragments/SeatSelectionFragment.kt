@@ -167,26 +167,25 @@ class SeatSelectionFragment : Fragment(), View.OnTouchListener {
 
     private fun fetchMovieData(movieID: Int) {
         val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-//         TODO: Uncomment this when the API is ready
-//        val call = movieService.getMovieByID(movieID)
-//        call.enqueue(object : Callback<Movie> {
-//            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-//                if (response.isSuccessful) {
-//                    movie = response.body()!!
-//                    Log.i("API", "Fetched Movie")
-//
-//                    fetchRoomData(schedule.roomId)
-//                } else {
-//                    val errorMessage = response.message()
-//                    Log.i("API", errorMessage)
-//                    Log.i("API", "GET FAILED")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Movie>, t: Throwable) {
-//                Log.i("API", t.message!!)
-//            }
-//        })
+        val call = movieService.getMovieByID(movieID)
+        call.enqueue(object : Callback<Movie> {
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                if (response.isSuccessful) {
+                    movie = response.body()!!
+                    Log.i("API", "Fetched Movie")
+
+                    fetchRoomData(schedule.roomId)
+                } else {
+                    val errorMessage = response.message()
+                    Log.i("API", errorMessage)
+                    Log.i("API", "GET FAILED")
+                }
+            }
+
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     private fun fetchBookedSeats() {
