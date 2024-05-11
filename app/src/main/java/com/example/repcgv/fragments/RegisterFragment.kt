@@ -17,7 +17,10 @@ import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.widget.CompoundButtonCompat
+import com.example.repcgv.MainActivity
 import com.example.repcgv.R
+import com.example.repcgv.api.AuthService
+import com.example.repcgv.api.RetrofitClient
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -66,28 +69,28 @@ class RegisterFragment : Fragment() {
         }
 
         // Gọi phương thức register từ AuthService
-//        val authService = RetrofitClient.instance.create(AuthService::class.java)
-//        val call = authService.register(requestJson)
-//        call.enqueue(object : Callback<ResponseBody> {
-//            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-//                if (response.isSuccessful) {
-//                    // Xử lý thành công
-//                    Log.d("Register", "Registration successful")
-//                    (this@RegisterFragment.activity as MainActivity).addFragment(LoginFragment(),"login")
-//
-//
-//                    // Thực hiện các hành động tiếp theo sau khi đăng ký thành công
-//                } else {
-//                    // Xử lý khi có lỗi từ server
-//                    Log.e("Register", "Error: ${response.code()} - ${response.message()}")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-//                // Xử lý khi gặp lỗi kết nối
-//                Log.e("Register", "Failed to connect: ${t.message}")
-//            }
-//        })
+        val authService = RetrofitClient.instance.create(AuthService::class.java)
+        val call = authService.register(requestJson)
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    // Xử lý thành công
+                    Log.d("Register", "Registration successful")
+                    (this@RegisterFragment.activity as MainActivity).addFragment(LoginFragment(),"login")
+
+
+                    // Thực hiện các hành động tiếp theo sau khi đăng ký thành công
+                } else {
+                    // Xử lý khi có lỗi từ server
+                    Log.e("Register", "Error: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                // Xử lý khi gặp lỗi kết nối
+                Log.e("Register", "Failed to connect: ${t.message}")
+            }
+        })
     }
 
     fun init(view: View) {
@@ -136,60 +139,60 @@ class RegisterFragment : Fragment() {
 
             datePickerDialog.show()
         }
-//        editTextUserGender.setOnClickListener {
-//            val options = listOf<String>("Male", "Female", "Other")
-//
-//            val dialogView = layoutInflater.inflate(R.layout.alert_dialog_radio_select, null)
-//            val dialogTitle = dialogView.findViewById<TextView>(R.id.textViewAlertDialogTitle)
-//            val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroup)
-//
-//            dialogTitle.text = "Choose a gender"
-//
-//            val black_color = ContextCompat.getColor(this.requireContext(), R.color.black)
-//            val checked_color = ContextCompat.getColor(this.requireContext(), R.color.red)
-//            val unchecked_color = ContextCompat.getColor(this.requireContext(), R.color.greytext)
-//
-//            val colorStateList = ColorStateList(
-//                arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf(-android.R.attr.state_checked)),
-//                intArrayOf(checked_color, unchecked_color)
-//            )
-//
-//            for((index, option) in options.withIndex()){
-//                val radioButton = RadioButton(this.requireContext())
-//                radioButton.id = index
-//                radioButton.text = option
-//                radioButton.setTextColor(black_color)
-//                radioButton.layoutDirection = View.LAYOUT_DIRECTION_RTL
-//                radioButton.layoutParams = RadioGroup.LayoutParams(
-//                    RadioGroup.LayoutParams.MATCH_PARENT,
-//                    resources.getDimensionPixelSize(R.dimen.radio_button_height)
-//                )
-//                CompoundButtonCompat.setButtonTintList(
-//                    radioButton,
-//                    colorStateList
-//                )
-//                radioGroup.addView(radioButton)
-//                if(option == editTextUserGender.text.toString()){
-//                    radioButton.isChecked = true
-//                }
-//            }
-//
-//            val dialogBuilder = AlertDialog.Builder(this.requireContext())
-//                .setView(dialogView)
-//                .setCancelable(true)
-//
-//            val dialog = dialogBuilder.create()
-//
-//            radioGroup.setOnCheckedChangeListener { group, checkedId ->
-//                val selectedRadioButton = dialogView.findViewById<RadioButton>(checkedId)
-//                editTextUserGender.setText(selectedRadioButton.text)
-//
-//                dialog?.dismiss()
-//            }
-//
-//            dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_rounded_background)
-//            dialog.show()
-//        }
+        editTextUserGender.setOnClickListener {
+            val options = listOf<String>("Male", "Female", "Other")
+
+            val dialogView = layoutInflater.inflate(R.layout.alert_dialog_radio_select, null)
+            val dialogTitle = dialogView.findViewById<TextView>(R.id.textViewAlertDialogTitle)
+            val radioGroup = dialogView.findViewById<RadioGroup>(R.id.radioGroup)
+
+            dialogTitle.text = "Choose a gender"
+
+            val black_color = ContextCompat.getColor(this.requireContext(), R.color.black)
+            val checked_color = ContextCompat.getColor(this.requireContext(), R.color.red)
+            val unchecked_color = ContextCompat.getColor(this.requireContext(), R.color.greytext)
+
+            val colorStateList = ColorStateList(
+                arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf(-android.R.attr.state_checked)),
+                intArrayOf(checked_color, unchecked_color)
+            )
+
+            for((index, option) in options.withIndex()){
+                val radioButton = RadioButton(this.requireContext())
+                radioButton.id = index
+                radioButton.text = option
+                radioButton.setTextColor(black_color)
+                radioButton.layoutDirection = View.LAYOUT_DIRECTION_RTL
+                radioButton.layoutParams = RadioGroup.LayoutParams(
+                    RadioGroup.LayoutParams.MATCH_PARENT,
+                    resources.getDimensionPixelSize(R.dimen.radio_button_height)
+                )
+                CompoundButtonCompat.setButtonTintList(
+                    radioButton,
+                    colorStateList
+                )
+                radioGroup.addView(radioButton)
+                if(option == editTextUserGender.text.toString()){
+                    radioButton.isChecked = true
+                }
+            }
+
+            val dialogBuilder = AlertDialog.Builder(this.requireContext())
+                .setView(dialogView)
+                .setCancelable(true)
+
+            val dialog = dialogBuilder.create()
+
+            radioGroup.setOnCheckedChangeListener { group, checkedId ->
+                val selectedRadioButton = dialogView.findViewById<RadioButton>(checkedId)
+                editTextUserGender.setText(selectedRadioButton.text)
+
+                dialog?.dismiss()
+            }
+
+            dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_rounded_background)
+            dialog.show()
+        }
     }
 
 }
