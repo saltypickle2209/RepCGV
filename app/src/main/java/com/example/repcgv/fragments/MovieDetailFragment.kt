@@ -17,12 +17,12 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.repcgv.MainActivity
 import com.example.repcgv.R
-//import com.example.repcgv.api.AccountApi
-//import com.example.repcgv.api.AuthService
-//import com.example.repcgv.api.GenreApi
+import com.example.repcgv.api.AccountApi
+import com.example.repcgv.api.AuthService
+import com.example.repcgv.api.GenreApi
 import com.example.repcgv.api.MovieApi
-//import com.example.repcgv.api.PersonApi
-//import com.example.repcgv.api.RetrofitClient
+import com.example.repcgv.api.PersonApi
+import com.example.repcgv.api.RetrofitClient
 import com.example.repcgv.models.AuthResponse
 import com.example.repcgv.models.Genre
 import com.example.repcgv.models.Movie
@@ -80,47 +80,47 @@ class MovieDetailFragment : Fragment() {
 
     private fun fetchData()
     {
-//        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-//        val call = movieService.getMovieByID(movieID)
-//        call.enqueue(object : Callback<Movie> {
-//            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
-//                if (response.isSuccessful) {
-//                    // Handle successful response
-//                    movie = response.body()!!
-//                    Log.i("API", movie.name)
-//                    fetchPeopleData()
-//                } else {
-//                    val errorMessage = response.message()
-//                    Log.i("API", errorMessage)
-//                    Log.i("API", "GET FAILED")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<Movie>, t: Throwable) {
-//                Log.i("API", t.message!!)
-//            }
-//        })
+        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
+        val call = movieService.getMovieByID(movieID)
+        call.enqueue(object : Callback<Movie> {
+            override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                if (response.isSuccessful) {
+                    // Handle successful response
+                    movie = response.body()!!
+                    Log.i("API", movie.name)
+                    fetchPeopleData()
+                } else {
+                    val errorMessage = response.message()
+                    Log.i("API", errorMessage)
+                    Log.i("API", "GET FAILED")
+                }
+            }
+
+            override fun onFailure(call: Call<Movie>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     private fun fetchPeopleData(){
-//        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-//        val call = movieService.getAllPersonInvolved(movie.id)
-//        call.enqueue(object : Callback<List<Person>> {
-//            override fun onResponse(call: Call<List<Person>>, response: Response<List<Person>>) {
-//                if (response.isSuccessful) {
-//                    people = response.body()!!
-//                    setValue()
-//                } else {
-//                    val errorMessage = response.message()
-//                    Log.i("API", errorMessage)
-//                    Log.i("API", "GET FAILED")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Person>>, t: Throwable) {
-//                Log.i("API", t.message!!)
-//            }
-//        })
+        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
+        val call = movieService.getAllPersonInvolved(movie.id)
+        call.enqueue(object : Callback<List<Person>> {
+            override fun onResponse(call: Call<List<Person>>, response: Response<List<Person>>) {
+                if (response.isSuccessful) {
+                    people = response.body()!!
+                    setValue()
+                } else {
+                    val errorMessage = response.message()
+                    Log.i("API", errorMessage)
+                    Log.i("API", "GET FAILED")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Person>>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     private fun init()
@@ -145,7 +145,7 @@ class MovieDetailFragment : Fragment() {
         }
 
         btnReview.setOnClickListener{
-//            (this.activity as? MainActivity)?.addFragment(MovieReviewFragment(), "reviewList")
+            (this.activity as? MainActivity)?.addFragment(MovieReviewFragment(), "reviewList")
         }
     }
 
@@ -174,29 +174,29 @@ class MovieDetailFragment : Fragment() {
 
     fun getGenresNamesByIds(ids: List<Int>, callback: (String) -> Unit) {
         val namesList = mutableListOf<String>()
-//        val genreApi = RetrofitClient.instance.create(GenreApi::class.java)
-//        // Iterate through each ID and fetch the corresponding genre's name
-//        ids.forEach { id ->
-//            genreApi.getGenreByID(id).enqueue(object : Callback<Genre> {
-//                override fun onResponse(call: Call<Genre>, response: Response<Genre>) {
-//                    if (response.isSuccessful) {
-//                        val genre = response.body()
-//                        if (genre != null) {
-//                            namesList.add(genre.name)
-//                        }
-//                    }
-//                    // Check if all names have been fetched
-//                    if (namesList.size == ids.size) {
-//                        // Concatenate the names into a single string separated by commas
-//                        val namesString = namesList.joinToString(", ")
-//                        callback(namesString)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<Genre>, t: Throwable) {
-//                }
-//            })
-//        }
+        val genreApi = RetrofitClient.instance.create(GenreApi::class.java)
+        // Iterate through each ID and fetch the corresponding genre's name
+        ids.forEach { id ->
+            genreApi.getGenreByID(id).enqueue(object : Callback<Genre> {
+                override fun onResponse(call: Call<Genre>, response: Response<Genre>) {
+                    if (response.isSuccessful) {
+                        val genre = response.body()
+                        if (genre != null) {
+                            namesList.add(genre.name)
+                        }
+                    }
+                    // Check if all names have been fetched
+                    if (namesList.size == ids.size) {
+                        // Concatenate the names into a single string separated by commas
+                        val namesString = namesList.joinToString(", ")
+                        callback(namesString)
+                    }
+                }
+
+                override fun onFailure(call: Call<Genre>, t: Throwable) {
+                }
+            })
+        }
     }
 
     private fun formatTime(minutes: Int): String {
