@@ -37,6 +37,7 @@ class MovieSearchFragment : Fragment() {
     private var movieList: ArrayList<Movie> = ArrayList()
     private val movieService = RetrofitClient.instance.create(MovieApi::class.java)
     private var currentlyShowing = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -101,7 +102,24 @@ class MovieSearchFragment : Fragment() {
     }
 
     private fun fetchData(){
+        val call = movieService.getMoviesByName(editTextSearchQuery.text.toString(), currentlyShowing)
 
+        call.enqueue(object : Callback<List<Movie>> {
+            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
+                if (response.isSuccessful) {
+                    // Handle successful response
+                    recyclerViewMovieListAdapter.updateList(ArrayList(response.body()!!))
+                    recyclerViewMovieList.scrollToPosition(0)
+                } else {
+                    val errorMessage = response.message()
+                    Log.i("API", errorMessage)
+                    Log.i("API", "GET FAILED")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
-
 }
