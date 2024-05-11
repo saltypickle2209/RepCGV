@@ -16,6 +16,7 @@ import com.example.repcgv.R
 import com.example.repcgv.api.PersonApi
 import com.example.repcgv.api.RetrofitClient
 import com.example.repcgv.models.Movie
+import com.example.repcgv.models.Person
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -96,7 +97,21 @@ class RecyclerViewMovieAdapter(private val fragment : Fragment, private var movi
         }
 
 
+        val call = personService.getPersonByID(item.director)
 
+        call.enqueue(object : Callback<Person> {
+            override fun onResponse(call: Call<Person>, response: Response<Person>) {
+                if (response.isSuccessful) {
+                    holder.textViewMovieDirector.text = response.body()!!.name
+                } else {
+                    holder.textViewMovieDirector.text = item.director.toString()
+                }
+            }
+
+            override fun onFailure(call: Call<Person>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     fun updateList(newList: List<Movie>){
