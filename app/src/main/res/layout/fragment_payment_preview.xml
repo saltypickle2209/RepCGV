@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.PaymentPreviewFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:src="@drawable/back_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="start|fill_vertical"
+                android:text="Payment"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ticketBtn"
+                app:layout_constraintStart_toEndOf="@id/backBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ticketBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:src="@drawable/ticket"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/menuBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red" />
+
+            <ImageButton
+                android:id="@+id/menuBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:src="@drawable/menu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/red" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/billPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ticket_full_bg_nine_patch"
+            android:padding="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/navbar">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewMoviePoster"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="64dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewMoviePoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/card_after_training" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/textViewMovieName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="MOVIE'S NAME LALALALLALALALALA"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toTopOf="@id/textViewBookingDate"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintLeft_toRightOf="@+id/cardViewMoviePoster"
+                app:layout_constraintRight_toLeftOf="@+id/movieClassification"
+                app:layout_constraintTop_toTopOf="@id/cardViewMoviePoster" />
+
+            <android.widget.Button
+                android:id="@+id/movieClassification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/movie_classification"
+                android:backgroundTint="@color/black"
+                android:clickable="false"
+                android:minWidth="28dp"
+                android:minHeight="0dp"
+                android:text="K"
+                android:textColor="@color/black"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewMovieName"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintLeft_toRightOf="@+id/textViewMovieName"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textViewMovieName" />
+
+            <TextView
+                android:id="@+id/textViewBookingDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Sun, Jan 1st, 2000"
+                android:textColor="@color/darker_greytext"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/textViewBookingTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/textViewMovieName" />
+
+            <TextView
+                android:id="@+id/textViewBookingTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="12:00"
+                android:textColor="@color/darker_greytext"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCinemaName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBookingDate" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/location"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewCinemaName"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toTopOf="@+id/textViewCinemaName"
+                app:tint="@color/darker_greytext" />
+
+            <TextView
+                android:id="@+id/textViewCinemaName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="CGV Su Van Hanh"
+                android:textColor="@color/darker_greytext"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCinemaRoom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toBottomOf="@+id/textViewBookingTime" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/door"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewCinemaRoom"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toTopOf="@+id/textViewCinemaRoom"
+                app:tint="@color/darker_greytext" />
+
+            <TextView
+                android:id="@+id/textViewCinemaRoom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="Cinema 1"
+                android:textColor="@color/darker_greytext"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textViewSeat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCinemaName" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/seat"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewSeat"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toTopOf="@+id/textViewSeat"
+                app:tint="@color/darker_greytext" />
+
+            <TextView
+                android:id="@+id/textViewSeat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="A1, B2"
+                android:textColor="@color/darker_greytext"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textViewFoodAndDrink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@id/imageView9"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCinemaRoom" />
+
+            <TextView
+                android:id="@+id/textViewFoodAndDrink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="MILO COMBO 2023x1, MINI ADVENTURE SINGLE CBx1"
+                android:textColor="@color/darker_greytext"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/textViewOriginalTotal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSeat" />
+
+            <TextView
+                android:id="@+id/textViewOriginalTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="Total price: 1.000.000 đ"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/cardViewMoviePoster"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFoodAndDrink" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="-16dp"
+            android:scrollbarThumbVertical="@android:color/transparent"
+            android:translationZ="-1000dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/billPreview">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="32dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="TICKET INFORMATION"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view"
+                        app:layout_constraintEnd_toEndOf="@+id/view"
+                        app:layout_constraintStart_toStartOf="@id/view"
+                        app:layout_constraintTop_toTopOf="@+id/view" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Quantity"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view2"
+                        app:layout_constraintStart_toStartOf="@+id/view2"
+                        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+                    <TextView
+                        android:id="@+id/textViewTicketQuantity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="1"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view2"
+                        app:layout_constraintEnd_toEndOf="@+id/view2"
+                        app:layout_constraintTop_toTopOf="@+id/view2" />
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="0dp"
+                        android:layout_height="0.25dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view2" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view4" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Total"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view3"
+                        app:layout_constraintStart_toStartOf="@+id/view3"
+                        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+                    <TextView
+                        android:id="@+id/textViewTicketTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="1.000.000 đ"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view3"
+                        app:layout_constraintEnd_toEndOf="@+id/view3"
+                        app:layout_constraintTop_toTopOf="@+id/view3" />
+
+                    <!-- IF THERE ISN"T ANY FOOD OR BEVERAGE, CONSIDER SETTING THIS GROUP'S VISIBILITY TO GONE -->
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view3" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="FOOD AND BEVERAGE INFORMATION"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view5"
+                        app:layout_constraintEnd_toEndOf="@+id/view5"
+                        app:layout_constraintStart_toStartOf="@id/view5"
+                        app:layout_constraintTop_toTopOf="@+id/view5" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewFoodAndBeverageList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view5" />
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/recyclerViewFoodAndBeverageList" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Total"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view6"
+                        app:layout_constraintStart_toStartOf="@+id/view6"
+                        app:layout_constraintTop_toTopOf="@+id/view6" />
+
+                    <TextView
+                        android:id="@+id/textViewFoodAndBeverageTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="1.000.000 đ"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view6"
+                        app:layout_constraintEnd_toEndOf="@+id/view6"
+                        app:layout_constraintTop_toTopOf="@+id/view6" />
+
+                    <View
+                        android:id="@+id/view7"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view6" />
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="DISCOUNT METHOD"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view7"
+                        app:layout_constraintEnd_toEndOf="@+id/view7"
+                        app:layout_constraintStart_toStartOf="@id/view7"
+                        app:layout_constraintTop_toTopOf="@+id/view7" />
+
+                    <android.widget.Button
+                        android:id="@+id/voucherBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/ripple_transparent_btn_white"
+                        android:drawableEnd="@drawable/chevron_right"
+                        android:drawableTint="@color/darker_greytext"
+                        android:fontFamily="sans-serif"
+                        android:gravity="start|center"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Voucher"
+                        android:textAllCaps="false"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view7" />
+
+                    <View
+                        android:id="@+id/view8"
+                        android:layout_width="0dp"
+                        android:layout_height="0.25dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/voucherBtn" />
+
+                    <android.widget.Button
+                        android:id="@+id/couponBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/ripple_transparent_btn_white"
+                        android:drawableEnd="@drawable/chevron_right"
+                        android:drawableTint="@color/darker_greytext"
+                        android:fontFamily="sans-serif"
+                        android:gravity="start|center"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Coupon"
+                        android:textAllCaps="false"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view8" />
+
+                    <View
+                        android:id="@+id/view9"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/couponBtn" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="SUMMARY"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view9"
+                        app:layout_constraintEnd_toEndOf="@+id/view9"
+                        app:layout_constraintStart_toStartOf="@id/view9"
+                        app:layout_constraintTop_toTopOf="@+id/view9" />
+
+                    <View
+                        android:id="@+id/view10"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view9" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Subtotal"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view10"
+                        app:layout_constraintStart_toStartOf="@+id/view10"
+                        app:layout_constraintTop_toTopOf="@+id/view10" />
+
+                    <TextView
+                        android:id="@+id/textViewSubtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="1.000.000 đ"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view10"
+                        app:layout_constraintEnd_toEndOf="@+id/view10"
+                        app:layout_constraintTop_toTopOf="@+id/view10" />
+
+                    <View
+                        android:id="@+id/view11"
+                        android:layout_width="0dp"
+                        android:layout_height="0.25dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view10" />
+
+                    <View
+                        android:id="@+id/view12"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view11" />
+
+                    <TextView
+                        android:id="@+id/textView27"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Discount"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view12"
+                        app:layout_constraintStart_toStartOf="@+id/view12"
+                        app:layout_constraintTop_toTopOf="@+id/view12" />
+
+                    <TextView
+                        android:id="@+id/textViewDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="0 đ"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view12"
+                        app:layout_constraintEnd_toEndOf="@+id/view12"
+                        app:layout_constraintTop_toTopOf="@+id/view12" />
+
+                    <View
+                        android:id="@+id/view13"
+                        android:layout_width="0dp"
+                        android:layout_height="0.25dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view12" />
+
+                    <View
+                        android:id="@+id/view14"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view13" />
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Total"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view14"
+                        app:layout_constraintStart_toStartOf="@+id/view14"
+                        app:layout_constraintTop_toTopOf="@+id/view14" />
+
+                    <TextView
+                        android:id="@+id/textViewTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:text="999.000 đ"
+                        android:textColor="@color/darker_greytext"
+                        app:layout_constraintBottom_toBottomOf="@+id/view14"
+                        app:layout_constraintEnd_toEndOf="@+id/view14"
+                        app:layout_constraintTop_toTopOf="@+id/view14" />
+
+                    <View
+                        android:id="@+id/view15"
+                        android:layout_width="0dp"
+                        android:layout_height="54dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view14" />
+
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="PAYMENT"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/view15"
+                        app:layout_constraintEnd_toEndOf="@+id/view15"
+                        app:layout_constraintStart_toStartOf="@id/view15"
+                        app:layout_constraintTop_toTopOf="@+id/view15" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupPaymentMethod"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@id/radioButtonMoMo"
+                        android:divider="@color/divider"
+                        android:showDividers="middle"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view15">
+
+                        <RadioButton
+                            android:id="@+id/radioButtonMoMo"
+                            style="@style/PaymentRadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:button="@drawable/payment_radio_button_theme"
+                            android:drawableEnd="@drawable/momo"
+                            android:drawablePadding="8dp"
+                            android:layoutDirection="rtl"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="MoMo"
+                            android:textColor="@color/darker_greytext" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonZaloPay"
+                            style="@style/PaymentRadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:button="@drawable/payment_radio_button_theme"
+                            android:drawableEnd="@drawable/zalopay"
+                            android:drawablePadding="8dp"
+                            android:layoutDirection="rtl"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="ZaloPay"
+                            android:textColor="@color/darker_greytext" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtonVNPAY"
+                            style="@style/PaymentRadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:button="@drawable/payment_radio_button_theme"
+                            android:drawableEnd="@drawable/vnpay"
+                            android:drawablePadding="8dp"
+                            android:layoutDirection="rtl"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="VNPAY"
+                            android:textColor="@color/darker_greytext" />
+
+                    </RadioGroup>
+
+                    <View
+                        android:id="@+id/view16"
+                        android:layout_width="0dp"
+                        android:layout_height="72dp"
+                        android:background="@color/divider"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/radioGroupPaymentMethod" />
+
+                    <Button
+                        android:id="@+id/continueBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/red"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Continue"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@id/view16"
+                        app:layout_constraintEnd_toEndOf="@id/view16"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="@id/view16"
+                        app:layout_constraintTop_toTopOf="@id/view16" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

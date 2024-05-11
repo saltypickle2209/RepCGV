@@ -1,13 +1,13 @@
 package com.example.repcgv.fragments
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -15,25 +15,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.repcgv.MainActivity
 import com.example.repcgv.R
-import com.example.repcgv.adapters.RecyclerViewMovieAdapter
 import com.example.repcgv.api.MovieApi
 import com.example.repcgv.api.RetrofitClient
+import com.example.repcgv.adapters.RecyclerViewMovieAdapter
 import com.example.repcgv.models.Movie
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieManagementFragment : Fragment() {
+class BookByMovieFragment : Fragment() {
     private lateinit var backBtn: ImageButton
     private lateinit var menuBtn: ImageButton
 
     private lateinit var recyclerViewMovieList: RecyclerView
     private lateinit var recyclerViewMovieListAdapter: RecyclerViewMovieAdapter
 
-    private var movieList: ArrayList<Movie> = ArrayList()
-
-    private lateinit var addMovieBtn: FloatingActionButton
+    private lateinit var movieList: ArrayList<Movie>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -43,25 +40,26 @@ class MovieManagementFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_management, container, false)
+        return inflater.inflate(R.layout.fragment_book_by_movie, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fetchData(view)
         init(view)
-        fetchData()
     }
 
-    private fun fetchData(){
+    private fun fetchData(view: View){
         val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-        val call = movieService.getAllMovies()
+        val call = movieService.getCurrentlyShowingMovies()
 
         call.enqueue(object : Callback<List<Movie>> {
             override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
                 if (response.isSuccessful) {
                     // Handle successful response
-                    recyclerViewMovieListAdapter.updateList(ArrayList(response.body()!!))
+                    movieList = ArrayList(response.body()!!)
+                    setData()
                 } else {
                     val errorMessage = response.message()
                     Log.i("API", errorMessage)
@@ -88,17 +86,9 @@ class MovieManagementFragment : Fragment() {
         }
 
         recyclerViewMovieList = view.findViewById(R.id.recyclerViewMovieList)
+    }
 
-        addMovieBtn = view.findViewById(R.id.addMovieBtn)
-
-        addMovieBtn.setOnClickListener {
-            val fragment = MovieManagementDetailFragment()
-            fragment.arguments = Bundle().apply {
-                putString("type", "add")
-            }
-            (this.activity as? MainActivity)?.addFragment(fragment, "movie_management_detail")
-        }
-
+    private fun setData(){
         recyclerViewMovieListAdapter = RecyclerViewMovieAdapter(this, movieList)
         recyclerViewMovieList.adapter = recyclerViewMovieListAdapter
         recyclerViewMovieList.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -107,12 +97,11 @@ class MovieManagementFragment : Fragment() {
         recyclerViewMovieList.addItemDecoration(dividerItemDecoration)
 
         recyclerViewMovieListAdapter.onItemClick = {id ->
-            val fragment = MovieManagementDetailFragment()
+            val fragment = MovieDetailFragment()
             fragment.arguments = Bundle().apply {
-                putString("type", "edit")
                 putInt("id", id)
             }
-            (this.activity as? MainActivity)?.addFragment(fragment, "movie_management_detail")
+            (this.activity as? MainActivity)?.addFragment(fragment, "movie_detail")
         }
     }
 }
