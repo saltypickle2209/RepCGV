@@ -16,6 +16,11 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.repcgv.api.AccountApi
+import com.example.repcgv.api.RetrofitClient
+import com.example.repcgv.fragments.HomeFragment
+import com.example.repcgv.fragments.LoginFragment
+import com.example.repcgv.models.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -77,12 +82,12 @@ class MainActivity : AppCompatActivity() {
             Log.i("meo", "${supportFragmentManager.backStackEntryCount}")
         }
 
-        //replaceFragment(HomeFragment(), "home")
+        replaceFragment(HomeFragment(), "home")
     }
 
     fun addButtonClickEvent(){
         homeBtn.setOnClickListener {
-            //addFragment(HomeFragment(), "home")
+            addFragment(HomeFragment(), "home")
         }
 
         memberBtn.setOnClickListener {
@@ -90,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(applicationContext, "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //addFragment(LoginFragment(), "login")
+                addFragment(LoginFragment(), "login")
             }
             else {
                 //addFragment(UserDashboardFragment(), "member")
@@ -114,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(applicationContext, "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //addFragment(LoginFragment(), "login")
+                addFragment(LoginFragment(), "login")
             }
             else {
                 //addFragment(VoucherRedeemFragment(), "redeem")
@@ -126,7 +131,7 @@ class MainActivity : AppCompatActivity() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(applicationContext, "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //addFragment(LoginFragment(), "login")
+                addFragment(LoginFragment(), "login")
             }
             else {
                 //addFragment(TicketFragment(), "ticket")
@@ -142,7 +147,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener {
-            //addFragment(LoginFragment(), "login")
+            addFragment(LoginFragment(), "login")
         }
 
         logoutBtn.setOnClickListener {
@@ -153,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             toggleNavbarUser()
             manageScheduleBtn.visibility = View.GONE
             manageMoviesBtn.visibility = View.GONE
-            //addFragment(HomeFragment(), "home")
+            addFragment(HomeFragment(), "home")
         }
     }
 
@@ -201,7 +206,7 @@ class MainActivity : AppCompatActivity() {
         if(fragmentName != name) {
             if(name == "home"){
                 clearAllFragments()
-                //replaceFragment(HomeFragment(), "home")
+                replaceFragment(HomeFragment(), "home")
             }
             else{
                 replaceFragment(fragment, name)
@@ -238,35 +243,35 @@ class MainActivity : AppCompatActivity() {
         val token = sharedPref.getString("token", "") ?: ""
         isLoggedIn = token != ""
 
-//        if(token != ""){
-//            val accountService = RetrofitClient.instance.create(AccountApi::class.java)
-//            val call = accountService.getUserDetail(token)
-//            call.enqueue(object : Callback<User> {
-//                override fun onResponse(call: Call<User>, response: Response<User>) {
-//                    if (response.isSuccessful) {
-//                        // Handle successful response
-//                        val user = response.body()!!
-//                        userName.text = user.name
-//                        isAdmin = user.role == "admin"
-//
-//                        manageScheduleBtn.visibility = if(isLoggedIn && isAdmin) View.VISIBLE else View.GONE
-//                        manageMoviesBtn.visibility = if(isLoggedIn && isAdmin) View.VISIBLE else View.GONE
-//                    } else {
-//                        if(response.code() == 401){
-//                            Toast.makeText(this@MainActivity.applicationContext, "Token expired, please log in again.", Toast.LENGTH_SHORT).show()
-//                            val editor = sharedPref.edit()
-//                            editor.remove("token")
-//                            editor.apply()
-//                            addFragment(LoginFragment(), "login")
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<User>, t: Throwable) {
-//                    Log.i("API", t.message!!)
-//                }
-//            })
-//        }
+        if(token != ""){
+            val accountService = RetrofitClient.instance.create(AccountApi::class.java)
+            val call = accountService.getUserDetail(token)
+            call.enqueue(object : Callback<User> {
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if (response.isSuccessful) {
+                        // Handle successful response
+                        val user = response.body()!!
+                        userName.text = user.name
+                        isAdmin = user.role == "admin"
+
+                        manageScheduleBtn.visibility = if(isLoggedIn && isAdmin) View.VISIBLE else View.GONE
+                        manageMoviesBtn.visibility = if(isLoggedIn && isAdmin) View.VISIBLE else View.GONE
+                    } else {
+                        if(response.code() == 401){
+                            Toast.makeText(this@MainActivity.applicationContext, "Token expired, please log in again.", Toast.LENGTH_SHORT).show()
+                            val editor = sharedPref.edit()
+                            editor.remove("token")
+                            editor.apply()
+                            addFragment(LoginFragment(), "login")
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    Log.i("API", t.message!!)
+                }
+            })
+        }
 
         loginBtn.visibility = if(isLoggedIn) View.GONE else View.VISIBLE
         userName.visibility = if(isLoggedIn) View.VISIBLE else View.GONE
