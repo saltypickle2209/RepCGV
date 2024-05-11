@@ -68,13 +68,13 @@ class UserDashboardFragment : Fragment() {
         accountDetailBtn = view.findViewById(R.id.accountDetailBtn)
 
         accountDetailBtn.setOnClickListener {
-//            (this.activity as? MainActivity)?.addFragment(UserDetailFragment(), "user_detail")
+            (this.activity as? MainActivity)?.addFragment(UserDetailFragment(), "user_detail")
         }
 
         accountPasswordBtn = view.findViewById(R.id.accountPasswordBtn)
 
         accountPasswordBtn.setOnClickListener {
-//            (this.activity as? MainActivity)?.addFragment(ChangePasswordFragment(), "user_password")
+            (this.activity as? MainActivity)?.addFragment(ChangePasswordFragment(), "user_password")
         }
     }
 
