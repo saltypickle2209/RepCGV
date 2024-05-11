@@ -1,5 +1,4 @@
 package com.example.repcgv.models
-
 import com.google.gson.annotations.SerializedName
 
 data class Ticket(
@@ -18,4 +17,5 @@ data class Ticket(
     @SerializedName("total_ticket") val totalTicket: Int,
     @SerializedName("total_food") val totalFood: Int,
     @SerializedName("payment_method") val paymentMethod: String
-)
+) {
+}
