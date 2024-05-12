@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ScheduleEditFragment">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/navbar"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@null"
+                    android:src="@drawable/back_arrow"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/red" />
+
+                <TextView
+                    android:id="@+id/textViewHeaderTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:gravity="start|fill_vertical"
+                    android:text="Schedule"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ticketBtn"
+                    app:layout_constraintStart_toEndOf="@id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/ticketBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@null"
+                    android:src="@drawable/ticket"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/menuBtn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/red" />
+
+                <ImageButton
+                    android:id="@+id/menuBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@null"
+                    android:src="@drawable/menu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/red" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scrollbarThumbVertical="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/navbar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardView"
+                            android:layout_width="150dp"
+                            android:layout_height="225dp"
+                            android:layout_marginTop="16dp"
+                            android:clickable="true"
+                            app:cardBackgroundColor="@color/greytext"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:id="@+id/imageViewMoviePosterPreview"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:visibility="visible"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/inputMovieName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:hint="Movie"
+                            android:textColorHint="@color/greytext"
+                            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="filled"
+                            app:boxCollapsedPaddingTop="8dp"
+                            app:boxStrokeColor="@color/black"
+                            app:boxStrokeErrorColor="@color/red"
+                            app:cursorColor="@color/black"
+                            app:cursorErrorColor="@color/red"
+                            app:endIconDrawable="@drawable/drop_down"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/greytext"
+                            app:errorIconTint="@color/red"
+                            app:errorTextColor="@color/red"
+                            app:hintTextColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextMovieName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:paddingTop="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/inputDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Air date"
+                            android:textColorHint="@color/greytext"
+                            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="filled"
+                            app:boxCollapsedPaddingTop="8dp"
+                            app:boxStrokeColor="@color/black"
+                            app:boxStrokeErrorColor="@color/red"
+                            app:cursorColor="@color/black"
+                            app:cursorErrorColor="@color/red"
+                            app:errorIconTint="@color/red"
+                            app:errorTextColor="@color/red"
+                            app:hintTextColor="@color/black"
+
+                            app:layout_constraintEnd_toStartOf="@+id/inputTime"
+                            app:layout_constraintStart_toStartOf="@+id/inputMovieName"
+                            app:layout_constraintTop_toBottomOf="@+id/inputMovieName">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:paddingTop="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/inputTime"
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:hint="Air time"
+                            android:textColorHint="@color/greytext"
+                            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="filled"
+                            app:boxCollapsedPaddingTop="8dp"
+                            app:boxStrokeColor="@color/black"
+                            app:boxStrokeErrorColor="@color/red"
+                            app:cursorColor="@color/black"
+                            app:cursorErrorColor="@color/red"
+                            app:errorIconTint="@color/red"
+                            app:errorTextColor="@color/red"
+                            app:hintTextColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="@+id/inputMovieName"
+                            app:layout_constraintStart_toEndOf="@+id/inputDate"
+                            app:layout_constraintTop_toTopOf="@+id/inputDate">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:paddingTop="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/inputCinema"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Cinema"
+                            android:textColorHint="@color/greytext"
+                            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="filled"
+                            app:boxCollapsedPaddingTop="8dp"
+                            app:boxStrokeColor="@color/black"
+                            app:boxStrokeErrorColor="@color/red"
+                            app:cursorColor="@color/black"
+                            app:cursorErrorColor="@color/red"
+                            app:errorIconTint="@color/red"
+                            app:errorTextColor="@color/red"
+                            app:hintTextColor="@color/black"
+                            app:endIconDrawable="@drawable/drop_down"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/greytext"
+                            app:layout_constraintEnd_toStartOf="@+id/inputRoom"
+                            app:layout_constraintStart_toStartOf="@+id/inputMovieName"
+                            app:layout_constraintTop_toBottomOf="@+id/inputDate">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextCinema"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:paddingTop="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/inputRoom"
+                            android:layout_width="140dp"
+                            android:layout_height="match_parent"
+                            android:hint="Room"
+                            android:textColorHint="@color/greytext"
+                            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Filled"
+                            app:boxBackgroundColor="@color/white"
+                            app:boxBackgroundMode="filled"
+                            app:boxCollapsedPaddingTop="8dp"
+                            app:boxStrokeColor="@color/black"
+                            app:boxStrokeErrorColor="@color/red"
+                            app:cursorColor="@color/black"
+                            app:cursorErrorColor="@color/red"
+                            app:endIconDrawable="@drawable/drop_down"
+                            app:endIconMode="custom"
+                            app:endIconTint="@color/greytext"
+                            app:errorIconTint="@color/red"
+                            app:errorTextColor="@color/red"
+                            app:hintTextColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="@+id/inputMovieName"
+                            app:layout_constraintStart_toEndOf="@+id/inputCinema"
+                            app:layout_constraintTop_toTopOf="@+id/inputCinema">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editTextRoom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:focusable="false"
+                                android:inputType="none"
+                                android:paddingTop="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="true"
+                                android:textColor="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:id="@+id/saveBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:backgroundTint="@color/red"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Save"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/inputCinema" />
+
+                        <Button
+                            android:id="@+id/deleteBtn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:backgroundTint="@color/red"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Delete"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/saveBtn" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
