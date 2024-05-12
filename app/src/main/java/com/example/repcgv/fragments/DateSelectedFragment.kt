@@ -1,7 +1,6 @@
 package com.example.repcgv.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +31,7 @@ class DateSelectedFragment : Fragment() {
     fun setOnDateSelectedListener(listener: OnDateSelectedListener) {
         onDateSelectedListener = listener
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,11 +42,11 @@ class DateSelectedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =inflater.inflate(R.layout.fragment_date_selected, container, false)
+        val view = inflater.inflate(R.layout.fragment_date_selected, container, false)
         val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroup)
         val startDate = getStartDate()
         for (i in 0..6) {
-            val radioButton  =  radioGroup.getChildAt(i)   as? RadioButton
+            val radioButton = radioGroup.getChildAt(i) as? RadioButton
             if (radioButton != null) {
                 radioButton.setText((startDate + i).toString())  // Thiết lập ngày cho RadioButton
             }
@@ -60,15 +60,16 @@ class DateSelectedFragment : Fragment() {
                 // Xử lý sự kiện dựa trên RadioButton được chọn
 //                Log.d("Checked RadioButton", "Selected RadioButton: $text")
                 val date: Date = convertToDayOfMonth(selectedDate.toInt())
-                onDateSelectedListener?.onDateSelected(date,it)
+                onDateSelectedListener?.onDateSelected(date, it)
 
             } ?: run {
 //                Log.d("Checked RadioButton", "No RadioButton selected")
             }
         }
 
-        return  view
+        return view
     }
+
     fun getStartDate(): Int {
         // Lấy dữ liệu về ngày từ Fragment argument
         val args = arguments
@@ -78,6 +79,7 @@ class DateSelectedFragment : Fragment() {
         } else 1
         // Giá trị mặc định nếu không có dữ liệu
     }
+
     fun convertToDayOfMonth(dayOfMonth: Int): Date {
         val calendar = Calendar.getInstance()
         // Set ngày được chọn
