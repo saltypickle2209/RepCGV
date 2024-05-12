@@ -24,11 +24,14 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.repcgv.MainActivity
 import com.example.repcgv.R
 import com.example.repcgv.adapters.ImageURLAdapter
 import com.example.repcgv.adapters.RecyclerViewNewsAdapter
 import com.example.repcgv.adapters.SliderMenuAdapter
 import com.example.repcgv.adapters.ViewPagerMovieAdapter
+import com.example.repcgv.api.MovieApi
+import com.example.repcgv.api.RetrofitClient
 import com.example.repcgv.decorators.SpacingItemDecorator
 import com.example.repcgv.models.Movie
 import com.example.repcgv.models.News
@@ -93,28 +96,28 @@ class HomeFragment : Fragment() {
     }
 
     private fun fetchData(view: View){
-//        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-//        val call = movieService.getCurrentlyShowingMovies()
-//
-//        call.enqueue(object : Callback<List<Movie>> {
-//            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
-//                if (response.isSuccessful) {
-//                    // Handle successful response
-//                    movieList = ArrayList(response.body()!!)
-//                    initViewPagers()
-//                    handleViewPagerEvents()
-//                    initRecyclerViews()
-//                } else {
-//                    val errorMessage = response.message()
-//                    Log.i("API", errorMessage)
-//                    Log.i("API", "GET FAILED")
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
-//                Log.i("API", t.message!!)
-//            }
-//        })
+        val movieService = RetrofitClient.instance.create(MovieApi::class.java)
+        val call = movieService.getCurrentlyShowingMovies()
+
+        call.enqueue(object : Callback<List<Movie>> {
+            override fun onResponse(call: Call<List<Movie>>, response: Response<List<Movie>>) {
+                if (response.isSuccessful) {
+                    // Handle successful response
+                    movieList = ArrayList(response.body()!!)
+                    initViewPagers()
+                    handleViewPagerEvents()
+                    initRecyclerViews()
+                } else {
+                    val errorMessage = response.message()
+                    Log.i("API", errorMessage)
+                    Log.i("API", "GET FAILED")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Movie>>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     private fun init(view: View){
@@ -156,11 +159,11 @@ class HomeFragment : Fragment() {
         searchBtn = view.findViewById(R.id.searchBtn)
 
         menuBtn.setOnClickListener {
-            //(this.activity as? MainActivity)?.openDrawer()
+            (this.activity as? MainActivity)?.openDrawer()
         }
 
         ticketBtn.setOnClickListener {
-            //(this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
+            (this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
         }
 
         bookBtn.setOnClickListener{
@@ -169,7 +172,7 @@ class HomeFragment : Fragment() {
             fragment.arguments = Bundle().apply {
                 putInt("id", id)
             }
-            //(this.activity as? MainActivity)?.addFragment(fragment, "movie_detail")
+            (this.activity as? MainActivity)?.addFragment(fragment, "movie_detail")
         }
 
         imageViewUserIcon.setOnClickListener {
@@ -177,15 +180,15 @@ class HomeFragment : Fragment() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(requireContext(), "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //(this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+                (this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
             }
             else {
-                //(this.activity as? MainActivity)?.addFragment(UserDashboardFragment(), "member")
+                (this.activity as? MainActivity)?.addFragment(UserDashboardFragment(), "member")
             }
         }
 
         searchBtn.setOnClickListener {
-            //(this.activity as? MainActivity)?.addFragment(MovieSearchFragment(), "search")
+            (this.activity as? MainActivity)?.addFragment(MovieSearchFragment(), "search")
         }
 
         handler = Handler(Looper.myLooper()!!)
@@ -290,7 +293,7 @@ class HomeFragment : Fragment() {
             fragment.arguments = Bundle().apply {
                 putInt("id", id)
             }
-            //(this.activity as? MainActivity)?.addFragment(fragment, "movie_detail")
+            (this.activity as? MainActivity)?.addFragment(fragment, "movie_detail")
         }
 
         // SLIDER MENU VIEWPAGER

@@ -18,8 +18,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.repcgv.api.AccountApi
 import com.example.repcgv.api.RetrofitClient
+import com.example.repcgv.fragments.BookByMovieFragment
 import com.example.repcgv.fragments.HomeFragment
 import com.example.repcgv.fragments.LoginFragment
+import com.example.repcgv.fragments.MapFragment
+import com.example.repcgv.fragments.MovieManagementFragment
+import com.example.repcgv.fragments.TicketFragment
+import com.example.repcgv.fragments.UserDashboardFragment
 import com.example.repcgv.models.User
 import retrofit2.Call
 import retrofit2.Callback
@@ -98,12 +103,12 @@ class MainActivity : AppCompatActivity() {
                 addFragment(LoginFragment(), "login")
             }
             else {
-                //addFragment(UserDashboardFragment(), "member")
+                addFragment(UserDashboardFragment(), "member")
             }
         }
 
         bookByMovieBtn.setOnClickListener {
-            //addFragment(BookByMovieFragment(), "book_by_movie")
+            addFragment(BookByMovieFragment(), "book_by_movie")
         }
 
         newsBtn.setOnClickListener {
@@ -111,7 +116,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mapBtn.setOnClickListener {
-            //addFragment(MapFragment(), "map")
+            addFragment(MapFragment(), "map")
         }
 
         redeemBtn.setOnClickListener {
@@ -134,12 +139,12 @@ class MainActivity : AppCompatActivity() {
                 addFragment(LoginFragment(), "login")
             }
             else {
-                //addFragment(TicketFragment(), "ticket")
+                addFragment(TicketFragment(), "ticket")
             }
         }
 
         manageMoviesBtn.setOnClickListener {
-            //addFragment(MovieManagementFragment(), "movie_management")
+            addFragment(MovieManagementFragment(), "movie_management")
         }
 
         manageScheduleBtn.setOnClickListener {

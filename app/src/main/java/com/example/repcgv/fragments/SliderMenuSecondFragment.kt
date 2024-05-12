@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.repcgv.MainActivity
 import com.example.repcgv.R
 
 class SliderMenuSecondFragment : Fragment() {
@@ -36,7 +37,7 @@ class SliderMenuSecondFragment : Fragment() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(requireContext(), "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //(this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+                (this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
             }
             else {
                 //(this.activity as? MainActivity)?.addFragment(VoucherRedeemFragment(), "redeem")

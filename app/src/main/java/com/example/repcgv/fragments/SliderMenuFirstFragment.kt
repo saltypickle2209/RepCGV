@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import com.example.repcgv.MainActivity
 import com.example.repcgv.R
 
 class SliderMenuFirstFragment : Fragment() {
@@ -32,15 +33,15 @@ class SliderMenuFirstFragment : Fragment() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(requireContext(), "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //(this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+                (this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
             }
             else {
-                //(this.activity as? MainActivity)?.addFragment(UserDashboardFragment(), "member")
+                (this.activity as? MainActivity)?.addFragment(UserDashboardFragment(), "member")
             }
         }
 
         view.findViewById<Button>(R.id.mapBtn).setOnClickListener {
-            //(this.activity as? MainActivity)?.addFragment(MapFragment(), "map")
+            (this.activity as? MainActivity)?.addFragment(MapFragment(), "map")
         }
 
         view.findViewById<Button>(R.id.ticketBtn).setOnClickListener {
@@ -48,10 +49,10 @@ class SliderMenuFirstFragment : Fragment() {
             val token = sharedPref.getString("token", "") ?: ""
             if (token == "") {
                 Toast.makeText(requireContext(), "You need to log in to use this feature!", Toast.LENGTH_SHORT).show()
-                //(this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+                (this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
             }
             else {
-                //(this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
+                (this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
             }
         }
     }

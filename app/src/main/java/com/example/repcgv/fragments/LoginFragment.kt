@@ -100,7 +100,7 @@ class LoginFragment : Fragment() {
         forgotPasswordTextView.paintFlags = forgotPasswordTextView.paintFlags or Paint.UNDERLINE_TEXT_FLAG
         val btnRegister = view.findViewById<Button>(R.id.button2)
         btnRegister.setOnClickListener {
-            //(this.activity as MainActivity).addFragment(RegisterFragment(),"register")
+            (this.activity as MainActivity).addFragment(RegisterFragment(),"register")
         }
         editTextUserEmail = view.findViewById(R.id.editTextUserEmail)
         editTextPassword = view.findViewById(R.id.editTextPassword)
