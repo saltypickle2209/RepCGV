@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView1"
+        android:layout_width="152dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewVoucherImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/avatar_placeholder"
+            android:scaleType="centerCrop" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toTopOf="@id/cardView1"
+        app:layout_constraintStart_toEndOf="@id/cardView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Voucher"
+        android:textSize="12sp"
+        android:textColor="@color/darker_greytext" />
+
+    <TextView
+        android:id="@+id/textViewVoucherName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        app:layout_constraintStart_toEndOf="@id/cardView1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="VOUCHER'S NAME SO LONG SO LONG LONG LONG LONG LONG LONG"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/textViewVoucherPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/cardView1"
+        app:layout_constraintTop_toBottomOf="@id/textViewVoucherName"
+        android:text="10"
+        android:textColor="@color/red"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Points"
+        android:textColor="@color/darker_greytext"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/textViewVoucherPoint"
+        app:layout_constraintStart_toEndOf="@id/textViewVoucherPoint"
+        app:layout_constraintTop_toTopOf="@id/textViewVoucherPoint" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
