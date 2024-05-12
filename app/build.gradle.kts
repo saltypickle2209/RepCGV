@@ -52,6 +52,7 @@ dependencies {
     implementation("jp.wasabeef:glide-transformations:4.3.0")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.2.0")
+    implementation(files("libs/zpdk-release-v3.1.aar"))
     //implementation(files("libs/zpdk-release-v3.1.aar"))
 
     testImplementation("junit:junit:4.13.2")
