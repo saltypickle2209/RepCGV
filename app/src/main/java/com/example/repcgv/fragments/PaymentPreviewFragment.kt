@@ -1,8 +1,17 @@
-package com.example.repcgv.fragments
-
-import androidx.fragment.app.Fragment
-
-class PaymentPreviewFragment : Fragment() {
+//package com.example.repcgv.fragments
+//
+//import android.widget.Button
+//import android.widget.ImageButton
+//import android.widget.TextView
+//import androidx.fragment.app.Fragment
+//import androidx.recyclerview.widget.RecyclerView
+//import com.example.repcgv.adapters.RecyclerPaymentFoodAdapter
+//import com.example.repcgv.api.RetrofitClient
+//import com.example.repcgv.models.FoodPayment
+//import com.example.repcgv.models.Movie
+//import com.example.repcgv.models.Order
+//
+//class PaymentPreviewFragment : Fragment() {
 //    private lateinit var backBtn: ImageButton
 //    private lateinit var menuBtn: ImageButton
 //
@@ -25,13 +34,13 @@ class PaymentPreviewFragment : Fragment() {
 //    private  lateinit var textViewSubtotal :TextView
 //    private  lateinit var textViewTotal :TextView
 //
-//    private  lateinit var recyclerViewFoodAndBeverageList:RecyclerView
-//    private  lateinit var FoodPaymentAdapter :RecyclerPaymentFoodAdapter
+//    private  lateinit var recyclerViewFoodAndBeverageList: RecyclerView
+//    private  lateinit var FoodPaymentAdapter : RecyclerPaymentFoodAdapter
 //
 //    private  lateinit var ListFood : List<FoodPayment>
 //
 //    private lateinit var  order: Order
-//    private  var movie: Movie ?= null
+//    private  var movie: Movie?= null
 //    private  var cinema: Cinema?= null
 //    private val movieService = RetrofitClient.instance.create(MovieApi::class.java)
 //    private val cinemaService = RetrofitClient.instance.create(CinemaApi::class.java)
@@ -323,5 +332,5 @@ class PaymentPreviewFragment : Fragment() {
 //
 //    }
 //
-
-}
+//
+//}

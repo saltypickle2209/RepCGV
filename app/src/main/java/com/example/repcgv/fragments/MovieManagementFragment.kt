@@ -1,15 +1,13 @@
 package com.example.repcgv.fragments
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -53,7 +51,7 @@ class MovieManagementFragment : Fragment() {
         fetchData()
     }
 
-    private fun fetchData(){
+    private fun fetchData() {
         val movieService = RetrofitClient.instance.create(MovieApi::class.java)
         val call = movieService.getAllMovies()
 
@@ -75,7 +73,7 @@ class MovieManagementFragment : Fragment() {
         })
     }
 
-    private fun init(view: View){
+    private fun init(view: View) {
         backBtn = view.findViewById(R.id.backBtn)
         menuBtn = view.findViewById(R.id.menuBtn)
 
@@ -101,12 +99,19 @@ class MovieManagementFragment : Fragment() {
 
         recyclerViewMovieListAdapter = RecyclerViewMovieAdapter(this, movieList)
         recyclerViewMovieList.adapter = recyclerViewMovieListAdapter
-        recyclerViewMovieList.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL, false)
-        val dividerItemDecoration: DividerItemDecoration = DividerItemDecoration(recyclerViewMovieList.context, LinearLayoutManager.VERTICAL)
-        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this.requireContext(), R.drawable.item_divider)!!)
+        recyclerViewMovieList.layoutManager =
+            LinearLayoutManager(this.requireContext(), LinearLayoutManager.VERTICAL, false)
+        val dividerItemDecoration: DividerItemDecoration =
+            DividerItemDecoration(recyclerViewMovieList.context, LinearLayoutManager.VERTICAL)
+        dividerItemDecoration.setDrawable(
+            ContextCompat.getDrawable(
+                this.requireContext(),
+                R.drawable.item_divider
+            )!!
+        )
         recyclerViewMovieList.addItemDecoration(dividerItemDecoration)
 
-        recyclerViewMovieListAdapter.onItemClick = {id ->
+        recyclerViewMovieListAdapter.onItemClick = { id ->
             val fragment = MovieManagementDetailFragment()
             fragment.arguments = Bundle().apply {
                 putString("type", "edit")
