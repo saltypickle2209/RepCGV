@@ -23,8 +23,10 @@ import com.example.repcgv.fragments.HomeFragment
 import com.example.repcgv.fragments.LoginFragment
 import com.example.repcgv.fragments.MapFragment
 import com.example.repcgv.fragments.MovieManagementFragment
+import com.example.repcgv.fragments.NewsAndPromosFragment
 import com.example.repcgv.fragments.TicketFragment
 import com.example.repcgv.fragments.UserDashboardFragment
+import com.example.repcgv.fragments.VoucherRedeemFragment
 import com.example.repcgv.models.User
 import retrofit2.Call
 import retrofit2.Callback
@@ -112,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         newsBtn.setOnClickListener {
-            //addFragment(NewsAndPromosFragment(), "news")
+            addFragment(NewsAndPromosFragment(), "news")
         }
 
         mapBtn.setOnClickListener {
@@ -127,7 +129,7 @@ class MainActivity : AppCompatActivity() {
                 addFragment(LoginFragment(), "login")
             }
             else {
-                //addFragment(VoucherRedeemFragment(), "redeem")
+                addFragment(VoucherRedeemFragment(), "redeem")
             }
         }
 
