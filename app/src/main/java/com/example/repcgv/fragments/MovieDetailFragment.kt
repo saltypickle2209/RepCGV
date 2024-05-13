@@ -222,31 +222,31 @@ class MovieDetailFragment : Fragment() {
         val sharedPref = requireContext().getSharedPreferences("auth", Context.MODE_PRIVATE)
         val token = sharedPref.getString("token", "") ?: ""
 
-//        if (token != "") {
-//            val accountService = RetrofitClient.instance.create(AccountApi::class.java)
-//            val call = accountService.getUserDetail(token)
-//            call.enqueue(object : Callback<User> {
-//                override fun onResponse(call: Call<User>, response: Response<User>) {
-//                    if (response.isSuccessful) {
-//                        val args = Bundle()
-//                        val user = response.body()!!
-//                        args.putInt("movieId",movieID)
-//                        val fragment = BookingTimeFragment()
-//                        fragment.arguments = args
-//                        (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(fragment,"bookingTime")
-//
-//                    } else {
-//                        (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<User>, t: Throwable) {
-//                    Log.i("API", t.message!!)
-//                }
-//            })
-//        }else{
-//            (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
-//        }
+        if (token != "") {
+            val accountService = RetrofitClient.instance.create(AccountApi::class.java)
+            val call = accountService.getUserDetail(token)
+            call.enqueue(object : Callback<User> {
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    if (response.isSuccessful) {
+                        val args = Bundle()
+                        val user = response.body()!!
+                        args.putInt("movieId",movieID)
+                        val fragment = BookingTimeFragment()
+                        fragment.arguments = args
+                        (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(fragment,"bookingTime")
+
+                    } else {
+                        (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+                    }
+                }
+
+                override fun onFailure(call: Call<User>, t: Throwable) {
+                    Log.i("API", t.message!!)
+                }
+            })
+        }else{
+            (this@MovieDetailFragment.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
+        }
     }
 }
 

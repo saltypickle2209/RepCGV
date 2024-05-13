@@ -357,7 +357,7 @@ class PaymentPreviewFragment : Fragment() {
         textViewTicketTotal  = view.findViewById(R.id.textViewTicketTotal)
         textViewFoodAndBeverageTotal = view.findViewById(R.id.textViewFoodAndBeverageTotal)
         recyclerViewFoodAndBeverageList=view.findViewById(R.id.recyclerViewFoodAndBeverageList)
-//        recyclerViewFoodAndBeverageList.addItemDecoration(BookingTimeFragment.MarginItem(20))
+        recyclerViewFoodAndBeverageList.addItemDecoration(BookingTimeFragment.MarginItem(20))
         textViewSubtotal = view.findViewById(R.id.textViewSubtotal)
         textViewTotal = view.findViewById(R.id.textViewTotal)
 

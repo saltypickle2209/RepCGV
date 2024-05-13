@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.repcgv.MainActivity
 import com.example.repcgv.R
+import com.example.repcgv.api.GenreApi
 //TODO: Uncomment the following import statement to import the Retrofit library
 //import com.example.repcgv.api.GenreApi
 import com.example.repcgv.api.MovieApi
@@ -85,8 +86,7 @@ class MovieManagementDetailFragment : Fragment() {
     var selectedActors: ArrayList<Person> = ArrayList()
 
     private val movieService = RetrofitClient.instance.create(MovieApi::class.java)
-    //TODO: Uncomment the following line to create a GenreApi instance
-//    private val genreService = RetrofitClient.instance.create(GenreApi::class.java)
+    private val genreService = RetrofitClient.instance.create(GenreApi::class.java)
     private val personService = RetrofitClient.instance.create(PersonApi::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -300,80 +300,79 @@ class MovieManagementDetailFragment : Fragment() {
         }
 
         editTextMovieGenres.setOnClickListener {
-            //TODO: Uncomment the following code block to fetch genres from the API
-//            val call = genreService.getAllGenres()
-//
-//            call.enqueue(object : Callback<List<Genre>> {
-//                override fun onResponse(call: Call<List<Genre>>, response: Response<List<Genre>>) {
-//                    if (response.isSuccessful) {
-//                        val options = response.body()!!
-//
-//                        val dialogView = layoutInflater.inflate(R.layout.alert_dialog_checkbox_select, null)
-//                        val dialogTitle = dialogView.findViewById<TextView>(R.id.textViewAlertDialogTitle)
-//                        val linearLayout = dialogView.findViewById<LinearLayout>(R.id.linearLayout)
-//                        var dialogSaveBtn = dialogView.findViewById<Button>(R.id.saveBtn)
-//
-//                        dialogTitle.text = "Choose genre(s)"
-//
-//                        val black_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.black)
-//                        val checked_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.red)
-//                        val unchecked_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.greytext)
-//
-//                        val colorStateList = ColorStateList(
-//                            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf(-android.R.attr.state_checked)),
-//                            intArrayOf(checked_color, unchecked_color)
-//                        )
-//
-//                        for((index, option) in options.withIndex()){
-//                            val checkBox = CheckBox(this@MovieManagementDetailFragment.requireContext())
-//                            checkBox.id = index
-//                            checkBox.text = option.name
-//                            checkBox.setTextColor(black_color)
-//                            checkBox.layoutDirection = View.LAYOUT_DIRECTION_RTL
-//                            checkBox.layoutParams = RadioGroup.LayoutParams(
-//                                RadioGroup.LayoutParams.MATCH_PARENT,
-//                                resources.getDimensionPixelSize(R.dimen.radio_button_height)
-//                            )
-//                            CompoundButtonCompat.setButtonTintList(
-//                                checkBox,
-//                                colorStateList
-//                            )
-//                            linearLayout.addView(checkBox)
-//                            if(selectedGenres.any { it.id == option.id }){
-//                                checkBox.isChecked = true
-//                            }
-//                        }
-//
-//                        val dialogBuilder = AlertDialog.Builder(this@MovieManagementDetailFragment.requireContext())
-//                            .setView(dialogView)
-//                            .setCancelable(true)
-//
-//                        val dialog = dialogBuilder.create()
-//
-//                        dialogSaveBtn.setOnClickListener {
-//                            selectedGenres.clear()
-//                            for (i in 0..<linearLayout.childCount){
-//                                val checkBox = linearLayout.getChildAt(i) as CheckBox
-//                                if(checkBox.isChecked){
-//                                    selectedGenres.add(options[checkBox.id])
-//                                }
-//                            }
-//                            editTextMovieGenres.setText(selectedGenres.joinToString("/") { it.name })
-//
-//                            dialog?.dismiss()
-//                        }
-//
-//                        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_rounded_background)
-//                        dialog.show()
-//                    } else {
-//                        Toast.makeText(requireContext(), "Error: ${response.code()} - ${ response.errorBody()?.string() }", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<Genre>>, t: Throwable) {
-//                    Log.i("API", t.message!!)
-//                }
-//            })
+            val call = genreService.getAllGenres()
+
+            call.enqueue(object : Callback<List<Genre>> {
+                override fun onResponse(call: Call<List<Genre>>, response: Response<List<Genre>>) {
+                    if (response.isSuccessful) {
+                        val options = response.body()!!
+
+                        val dialogView = layoutInflater.inflate(R.layout.alert_dialog_checkbox_select, null)
+                        val dialogTitle = dialogView.findViewById<TextView>(R.id.textViewAlertDialogTitle)
+                        val linearLayout = dialogView.findViewById<LinearLayout>(R.id.linearLayout)
+                        var dialogSaveBtn = dialogView.findViewById<Button>(R.id.saveBtn)
+
+                        dialogTitle.text = "Choose genre(s)"
+
+                        val black_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.black)
+                        val checked_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.red)
+                        val unchecked_color = ContextCompat.getColor(this@MovieManagementDetailFragment.requireContext(), R.color.greytext)
+
+                        val colorStateList = ColorStateList(
+                            arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf(-android.R.attr.state_checked)),
+                            intArrayOf(checked_color, unchecked_color)
+                        )
+
+                        for((index, option) in options.withIndex()){
+                            val checkBox = CheckBox(this@MovieManagementDetailFragment.requireContext())
+                            checkBox.id = index
+                            checkBox.text = option.name
+                            checkBox.setTextColor(black_color)
+                            checkBox.layoutDirection = View.LAYOUT_DIRECTION_RTL
+                            checkBox.layoutParams = RadioGroup.LayoutParams(
+                                RadioGroup.LayoutParams.MATCH_PARENT,
+                                resources.getDimensionPixelSize(R.dimen.radio_button_height)
+                            )
+                            CompoundButtonCompat.setButtonTintList(
+                                checkBox,
+                                colorStateList
+                            )
+                            linearLayout.addView(checkBox)
+                            if(selectedGenres.any { it.id == option.id }){
+                                checkBox.isChecked = true
+                            }
+                        }
+
+                        val dialogBuilder = AlertDialog.Builder(this@MovieManagementDetailFragment.requireContext())
+                            .setView(dialogView)
+                            .setCancelable(true)
+
+                        val dialog = dialogBuilder.create()
+
+                        dialogSaveBtn.setOnClickListener {
+                            selectedGenres.clear()
+                            for (i in 0..<linearLayout.childCount){
+                                val checkBox = linearLayout.getChildAt(i) as CheckBox
+                                if(checkBox.isChecked){
+                                    selectedGenres.add(options[checkBox.id])
+                                }
+                            }
+                            editTextMovieGenres.setText(selectedGenres.joinToString("/") { it.name })
+
+                            dialog?.dismiss()
+                        }
+
+                        dialog.window?.setBackgroundDrawableResource(R.drawable.dialog_rounded_background)
+                        dialog.show()
+                    } else {
+                        Toast.makeText(requireContext(), "Error: ${response.code()} - ${ response.errorBody()?.string() }", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Genre>>, t: Throwable) {
+                    Log.i("API", t.message!!)
+                }
+            })
 
         }
 
@@ -715,11 +714,11 @@ class MovieManagementDetailFragment : Fragment() {
                 }
             }
         }
-        //TODO: Uncomment the following code block to fetch genres from the API
-//        for (id in genreIds) {
-//            val call = genreService.getGenreByID(id)
-//            call.enqueue(genreCallback)
-//        }
+
+        for (id in genreIds) {
+            val call = genreService.getGenreByID(id)
+            call.enqueue(genreCallback)
+        }
     }
 
     private fun fetchPersonFromId(personId: Int, callback: (Person?, Throwable?) -> Unit) {

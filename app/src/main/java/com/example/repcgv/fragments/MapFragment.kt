@@ -27,6 +27,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.repcgv.MainActivity
 import com.example.repcgv.R
 import com.example.repcgv.adapters.ImageURLAdapter
+import com.example.repcgv.api.CinemaApi
+import com.example.repcgv.api.RetrofitClient
+import com.example.repcgv.models.Cinema
 //TODO: uncomment this block when API is ready
 //import com.example.repcgv.api.CinemaApi
 //import com.example.repcgv.api.MovieApi
@@ -76,8 +79,8 @@ class MapFragment : Fragment() {
         LatLng(10.763825353031713, 106.68746293969397),
         LatLng(10.770430176518737, 106.66989703617679)
     )
-    //TODO: uncomment this block when API is ready
-    //private lateinit var cinemas: ArrayList<Cinema>
+
+    private lateinit var cinemas: ArrayList<Cinema>
 
     private lateinit var mMap: GoogleMap
     private lateinit var currentLocation: Location
@@ -111,9 +114,9 @@ class MapFragment : Fragment() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
         //TODO: uncomment this block when API is ready
-//        ticketBtn.setOnClickListener {
-//            (this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
-//        }
+        ticketBtn.setOnClickListener {
+            (this.activity as? MainActivity)?.addFragment(TicketFragment(), "ticket")
+        }
 
         viewPagerPromotion = view.findViewById(R.id.viewPagerPromotion)
 
@@ -162,20 +165,19 @@ class MapFragment : Fragment() {
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
         mMap = googleMap
-        //TODO: uncomment this block when API is ready
-//        cinemas.forEach {
-//            val marker = googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude)))
-//            marker?.tag = it
-//        }
-//        googleMap.setOnMarkerClickListener {
-//            val data = it.tag as Cinema
-//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(data.latitude, data.longitude), 15.0f))
-//            textViewCinemaName.text = data.name
-//            textViewCinemaAddress.text = data.address
-//            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-//            it.hideInfoWindow()
-//            true
-//        }
+        cinemas.forEach {
+            val marker = googleMap.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude)))
+            marker?.tag = it
+        }
+        googleMap.setOnMarkerClickListener {
+            val data = it.tag as Cinema
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(data.latitude, data.longitude), 15.0f))
+            textViewCinemaName.text = data.name
+            textViewCinemaAddress.text = data.address
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            it.hideInfoWindow()
+            true
+        }
 
         googleMap.setOnMapClickListener {
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(14.0f))
@@ -189,26 +191,25 @@ class MapFragment : Fragment() {
     }
 
     private fun getMap(){
-        //TODO: Uncomment this block when API is ready
-//        val cinemaService = RetrofitClient.instance.create(CinemaApi::class.java)
-//        val call = cinemaService.getAllCinemas()
-//
-//        call.enqueue(object : Callback<List<Cinema>> {
-//            override fun onResponse(call: Call<List<Cinema>>, response: Response<List<Cinema>>) {
-//                if (response.isSuccessful) {
-//                    // Handle successful response
-//                    cinemas = ArrayList(response.body()!!)
-//                    val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-//                    mapFragment?.getMapAsync(callback)
-//                } else {
-//                    (this@MapFragment.activity as? MainActivity)?.goBack()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<Cinema>>, t: Throwable) {
-//                Log.i("API", t.message!!)
-//            }
-//        })
+        val cinemaService = RetrofitClient.instance.create(CinemaApi::class.java)
+        val call = cinemaService.getAllCinemas()
+
+        call.enqueue(object : Callback<List<Cinema>> {
+            override fun onResponse(call: Call<List<Cinema>>, response: Response<List<Cinema>>) {
+                if (response.isSuccessful) {
+                    // Handle successful response
+                    cinemas = ArrayList(response.body()!!)
+                    val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+                    mapFragment?.getMapAsync(callback)
+                } else {
+                    (this@MapFragment.activity as? MainActivity)?.goBack()
+                }
+            }
+
+            override fun onFailure(call: Call<List<Cinema>>, t: Throwable) {
+                Log.i("API", t.message!!)
+            }
+        })
     }
 
     private fun hasPermissions(context: Context, permissions: Array<String>): Boolean = permissions.all {
