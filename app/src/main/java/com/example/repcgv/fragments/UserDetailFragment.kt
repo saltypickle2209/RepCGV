@@ -403,11 +403,11 @@ class UserDetailFragment : Fragment() {
                         // Handle successful response
                         val user = response.body()!!
 
-                        editTextUserName.setText(user.name)
-                        editTextUserPhone.setText(user.phone)
-                        editTextUserEmail.setText(user.email)
-                        editTextUserDOB.setText(user.dob)
-                        editTextUserGender.setText(user.gender)
+                        editTextUserName.setText(user.name ?: "")
+                        editTextUserPhone.setText(user.phone ?: "")
+                        editTextUserEmail.setText(user.email ?: "")
+                        editTextUserDOB.setText(user.dob ?: "")
+                        editTextUserGender.setText(user.gender ?: "")
                         editTextUserCity.setText(user.address?.get(0) ?: "")
                     } else {
                         if(response.code() == 401){
