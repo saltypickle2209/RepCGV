@@ -29,7 +29,7 @@ class SliderMenuSecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.newsBtn).setOnClickListener {
-            //(this.activity as? MainActivity)?.addFragment(NewsAndPromosFragment(), "news")
+            (this.activity as? MainActivity)?.addFragment(NewsAndPromosFragment(), "news")
         }
 
         view.findViewById<Button>(R.id.redeemBtn).setOnClickListener {
@@ -40,7 +40,7 @@ class SliderMenuSecondFragment : Fragment() {
                 (this.activity as? MainActivity)?.addFragment(LoginFragment(), "login")
             }
             else {
-                //(this.activity as? MainActivity)?.addFragment(VoucherRedeemFragment(), "redeem")
+                (this.activity as? MainActivity)?.addFragment(VoucherRedeemFragment(), "redeem")
             }
         }
     }
