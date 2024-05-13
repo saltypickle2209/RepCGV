@@ -24,6 +24,7 @@ import com.example.repcgv.fragments.LoginFragment
 import com.example.repcgv.fragments.MapFragment
 import com.example.repcgv.fragments.MovieManagementFragment
 import com.example.repcgv.fragments.NewsAndPromosFragment
+import com.example.repcgv.fragments.ScheduleManagementFragment
 import com.example.repcgv.fragments.TicketFragment
 import com.example.repcgv.fragments.UserDashboardFragment
 import com.example.repcgv.fragments.VoucherRedeemFragment
@@ -151,7 +152,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         manageScheduleBtn.setOnClickListener {
-            //addFragment(ScheduleManagementFragment(), "schedule_management")
+            addFragment(ScheduleManagementFragment(), "schedule_management")
         }
 
         loginBtn.setOnClickListener {
