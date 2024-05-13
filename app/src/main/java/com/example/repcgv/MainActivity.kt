@@ -31,6 +31,7 @@ import com.example.repcgv.models.User
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import vn.zalopay.sdk.ZaloPaySDK
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -286,8 +287,8 @@ class MainActivity : AppCompatActivity() {
         userCode.visibility = if(isLoggedIn) View.VISIBLE else View.GONE
         logoutBtn.visibility = if(isLoggedIn) View.VISIBLE else View.GONE
     }
-//    override fun onNewIntent(intent: Intent) {
-//        super.onNewIntent(intent)
-//        ZaloPaySDK.getInstance().onResult(intent)
-//    }
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        ZaloPaySDK.getInstance().onResult(intent)
+    }
 }
