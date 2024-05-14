@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.example.mad_21ktpm1_group11.views.ZoomLayout
+        <com.example.repcgv.views.ZoomLayout
             android:id="@+id/zoomLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

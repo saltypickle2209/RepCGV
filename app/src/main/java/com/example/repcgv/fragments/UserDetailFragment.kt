@@ -408,7 +408,7 @@ class UserDetailFragment : Fragment() {
                         editTextUserEmail.setText(user.email ?: "")
                         editTextUserDOB.setText(user.dob ?: "")
                         editTextUserGender.setText(user.gender ?: "")
-                        editTextUserCity.setText(user.address?.get(0) ?: "")
+                        editTextUserCity.setText(user.address?.getOrNull(0) ?: "")
                     } else {
                         if(response.code() == 401){
                             Toast.makeText(requireContext(), "Token expired, please log in again.", Toast.LENGTH_SHORT).show()
