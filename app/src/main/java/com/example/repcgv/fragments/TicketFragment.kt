@@ -69,7 +69,7 @@ class TicketFragment : Fragment() {
 
         findTicketBtn = view.findViewById(R.id.findTicketBtn)
         findTicketBtn.setOnClickListener {
-            
+            (this.activity as? MainActivity)?.addFragment(FindTicketFragment(), "find_ticket")
         }
     }
 }
